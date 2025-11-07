@@ -196,7 +196,7 @@ class Robot:
             minY = minY - (maxY - map_size[0])
             maxY = map_size[0]
 
-        map_loc = map_glo[minY:maxY][:, minX:maxX]
+        map_loc = map_glo[int(minY):int(maxY)][:, int(minX):int(maxX)]
         return map_loc
 
     def free_points(self, op_map):
@@ -277,7 +277,7 @@ class Robot:
         return coll_points, coll_index
 
     def inverse_sensor(self, robot_position, sensor_range, op_map, map_glo):
-        op_map = inverse_sensor_model(robot_position[0], robot_position[1], sensor_range, op_map, map_glo)
+        op_map = inverse_sensor_model(int(robot_position[0]), int(robot_position[1]), sensor_range, op_map, map_glo)
         return op_map
 
     def frontier(self, op_map, map_size, points):
